@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Yarny.Pages.EmailConfirmationPage"
+             Title="EmailConfirmationPage">
+    <Grid>
+        <!-- Фоновое изображение -->
+        <Image Source="log_reg_bg.svg"
+            Aspect="AspectFill"
+            HorizontalOptions="Fill"
+            VerticalOptions="Fill"/>
+
+        <!-- Основной контейнер -->
+        <Border BackgroundColor="#FFFFFF"
+             Stroke="#FDF7BD"
+             StrokeThickness="3"
+             StrokeShape="RoundRectangle 50"
+             HorizontalOptions="Center"
+             VerticalOptions="Center"
+             Padding="20,40,20,40"
+             WidthRequest="305"
+             Margin="20">
+
+            <StackLayout>
+
+
+                <Label Text="Пожалуйста," 
+                    FontSize="20" 
+                    TextColor="#FDD5BD" 
+                    HorizontalOptions="Center"
+                    />
+                <Label Text="подтвердите email!" 
+                    FontSize="20" 
+                    TextColor="#FDD5BD" 
+                    FontAttributes="Bold"
+                    HorizontalOptions="Center"
+                    />
+                <Label Text="Мы отправили" 
+                    FontSize="20" 
+                    TextColor="#FDD5BD" 
+                    HorizontalOptions="Center"
+                    />
+                <Label Text="сообщение для" 
+                    FontSize="20" 
+                    TextColor="#FDD5BD" 
+                    HorizontalOptions="Center"
+                    />
+                <Label Text="подтверждения Вам на" 
+                    FontSize="20" 
+                    TextColor="#FDD5BD" 
+                    HorizontalOptions="Center"
+                    />
+                <Label Text="почту." 
+                    FontSize="20" 
+                    TextColor="#FDD5BD" 
+                    HorizontalOptions="Center"
+                    />
+                
+            </StackLayout>
+        </Border>
+    </Grid>
+</ContentPage>

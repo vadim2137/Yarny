@@ -1,0 +1,339 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Yarny.Pages.CounterPage"
+             Title="CounterPage">
+
+    <Grid>
+        <Grid Padding="0,30,0,50" BackgroundColor="#FAFAF0">
+            <ScrollView>
+                <VerticalStackLayout x:Name="MainContainer" Spacing="20" Padding="20">
+                    <Label FontSize="40"
+                           FontFamily="MontserratAlternatesSemiBold"
+                           Text="Счётчик рядов"
+                           HorizontalOptions="Center"
+                           TextColor="#FDD5BD">
+                    </Label>
+
+                    <Border StrokeThickness="0"
+                            StrokeShape="RoundRectangle 45"
+                            HeightRequest="35"
+                            WidthRequest="230"
+                            BackgroundColor="#D5BCFF"
+                            VerticalOptions="Center"
+                            HorizontalOptions="Center"
+                            x:Name="NewCounter"
+                            Margin="0,0,0,20">
+                        <Label Text="Новый счётчик +"
+                               FontSize="20"
+                               FontFamily="MontserratAlternatesBold"
+                               HorizontalOptions="Fill"
+                               TextColor="#FFF"
+                               VerticalOptions="Center"
+                               HorizontalTextAlignment="Center" 
+                               VerticalTextAlignment="Center"/>
+                        <Border.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="NewCounterTapped"/>
+                        </Border.GestureRecognizers>
+
+                    </Border>
+
+                        <!-- Основной Border -->
+                        <Border Stroke="#D5BCFF"
+                                StrokeThickness="3"
+                                StrokeShape="RoundRectangle 50"
+                                BackgroundColor="{AppThemeBinding Light=White, Dark=#1E1E1E}"
+                                WidthRequest="300"
+                                VerticalOptions="Center"
+                                HorizontalOptions="Center"
+                                Padding="20">
+
+                            <VerticalStackLayout Spacing="15">
+                                <Label Text="Левая лапа зайца:" 
+                                       FontSize="16" 
+                                       HorizontalOptions="Center"
+                                       FontFamily="MontserratAlternatesSemiBold"/>
+
+                                <!-- Контейнер для кнопок счётчика -->
+                                <AbsoluteLayout HorizontalOptions="Center" HeightRequest="50">
+                                    <!-- Кнопка минус -->
+                                    <Border x:Name="MinusBorder"
+                                            Stroke="#D5BCFF"
+                                            StrokeThickness="3"
+                                            StrokeShape="RoundRectangle 25"
+                                            BackgroundColor="White"
+                                            WidthRequest="50"
+                                            HeightRequest="50"
+                                            AbsoluteLayout.LayoutBounds="0, 0">
+                                        <Button Text="-"
+                                                TextColor="Black"
+                                                BackgroundColor="Transparent"
+                                                WidthRequest="50"
+                                                HeightRequest="50"
+                                                FontSize="20"
+                                                Clicked="OnDecrementClicked"/>
+                                    </Border>
+
+                                    <!-- Отображение счетчика -->
+                                    <Label x:Name="CounterLabel"
+                                           Text="3"
+                                           FontSize="20"
+                                           WidthRequest="50"
+                                           HorizontalTextAlignment="Center"
+                                           VerticalTextAlignment="Center"
+                                           AbsoluteLayout.LayoutBounds="60, 0"/>
+
+                                    <!-- Кнопка плюс -->
+                                    <Border x:Name="PlusBorder"
+                                            Stroke="#D5BCFF"
+                                            StrokeThickness="3"
+                                            StrokeShape="RoundRectangle 25"
+                                            BackgroundColor="White"
+                                            WidthRequest="50"
+                                            HeightRequest="50"
+                                            AbsoluteLayout.LayoutBounds="120, 0">
+                                        <Button Text="+"
+                                                TextColor="Black"
+                                                BackgroundColor="Transparent"
+                                                WidthRequest="50"
+                                                HeightRequest="50"
+                                                FontSize="20"
+                                                Clicked="OnIncrementClicked"/>
+                                    </Border>
+                                </AbsoluteLayout>
+                            </VerticalStackLayout>
+                        </Border>
+                    
+                    
+                </VerticalStackLayout>
+            </ScrollView>
+        </Grid>
+
+        <!-- Header с логотипом -->
+        <Border BackgroundColor="#FFFFFF"
+                HeightRequest="50"
+                VerticalOptions="Start"
+                HorizontalOptions="Fill"
+                Margin="-1,0,-1,0"  
+                StrokeThickness="0">
+            <Image Source="big_logo_header.svg"
+                   Aspect="AspectFit" 
+                   HorizontalOptions="Fill"
+                   VerticalOptions="Fill" />
+        </Border>
+
+
+        <Border BackgroundColor="#FDBCE5"
+            StrokeShape="RoundRectangle 20, 20, 0, 0" 
+            HeightRequest="50"
+            VerticalOptions="End"
+            HorizontalOptions="Fill"
+            Margin="-1,0,-1,0"  
+            StrokeThickness="0">
+            <Grid HeightRequest="50"
+              Padding="0,0"
+              ColumnDefinitions="*,*,*,*" 
+              ColumnSpacing="0"
+              BackgroundColor="Transparent">
+
+                <Border Grid.Column="0"
+                    WidthRequest="45" 
+                    HeightRequest="45" 
+                    StrokeShape="RoundRectangle 45"
+                    BackgroundColor="#FDBCE5"
+                    Stroke="Transparent"
+                    StrokeThickness="0"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"/>
+                <Image Grid.Column="0"
+                   Source="post_feed_icon.svg"
+                   WidthRequest="30"
+                   HeightRequest="30"
+                   HorizontalOptions="Center"
+                   x:Name="PostFeedPageButton"
+                   VerticalOptions="Center">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="PostFeedPageTapped"/>
+                    </Image.GestureRecognizers>
+
+                </Image>
+
+                <Border Grid.Column="1"
+                    WidthRequest="45" 
+                    HeightRequest="45" 
+                    StrokeShape="RoundRectangle 45"
+                    BackgroundColor="#FAFAF0"
+                    Stroke="Transparent"
+                    StrokeThickness="0"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"/>
+                <Image Grid.Column="1"
+                   Source="counter_icon_active.svg"
+                   WidthRequest="30"
+                   HeightRequest="30"
+                   x:Name="CounterPageeButton"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="CounterPageTapped"/>
+                    </Image.GestureRecognizers>
+
+                </Image>
+
+                <Border Grid.Column="2"
+                      WidthRequest="45" 
+                      HeightRequest="45" 
+                      StrokeShape="RoundRectangle 45"
+                      BackgroundColor="#FDBCE5"
+                      Stroke="Transparent"
+                      StrokeThickness="0"
+                      HorizontalOptions="Center"
+                      VerticalOptions="Center"/>
+                                <Image Grid.Column="2"
+                     Source="search_icon.svg"
+                     WidthRequest="30"
+                     HeightRequest="30"
+                     x:Name="SearchPageeButton"
+                     HorizontalOptions="Center"
+                     VerticalOptions="Center">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="SearchPageTapped"/>
+                    </Image.GestureRecognizers>
+                </Image>
+
+                <Border Grid.Column="3"
+                    WidthRequest="45" 
+                    HeightRequest="45" 
+                    StrokeShape="RoundRectangle 45"
+                    BackgroundColor="#FDBCE5"
+                    Stroke="Transparent"
+                    StrokeThickness="0"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"/>
+                <Image Grid.Column="3"
+                   Source="profile_icon.svg"
+                   WidthRequest="30"
+                   HeightRequest="30"
+                   x:Name="ProfilePageButton"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="ProfilePageTapped"/>
+                    </Image.GestureRecognizers>
+                </Image>
+            </Grid>
+        </Border>
+
+
+        <!-- Затемнение фона -->
+        <Grid x:Name="Overlay"
+              BackgroundColor="#80000000"
+              Opacity="0"
+              IsVisible="False">
+
+            <Grid.GestureRecognizers>
+                <TapGestureRecognizer Tapped="OnOverlayTapped"/>
+            </Grid.GestureRecognizers>
+        </Grid>
+
+        <!-- Bottom Sheet через Border -->
+        <Border x:Name="BottomSheet"
+                StrokeShape="RoundRectangle 50,50,0,0"
+                HorizontalOptions="Fill"
+                VerticalOptions="End"
+                HeightRequest="300"
+                BackgroundColor="#D5BCFF"
+                Padding="20,40,20,0"
+                TranslationY="300">
+
+            <Grid RowDefinitions="Auto,Auto,*">
+                
+                
+                
+                <Label Text="Добавьте название"
+                       FontSize="30"
+                       FontFamily="MontserratAlternatesRegular"
+                       HorizontalOptions="Center"
+                       TextColor="#FFFFFF"
+                       Grid.Row="0"
+                       Margin="0,0,0,5"/>
+
+                
+
+
+
+                <StackLayout Orientation="Vertical"
+                             HorizontalOptions="Center"
+                             Spacing="20"
+                             Grid.Row="2">
+
+                    <Border StrokeThickness="0"
+                            StrokeShape="RoundRectangle 45"
+                            HeightRequest="50"
+                            WidthRequest="340"
+                            BackgroundColor="White"
+                            Padding="10, 0, 10, 0">
+                        <Entry 
+                               Keyboard="Text"
+                               FontSize="12"
+                               FontFamily="MontserratAlternatesMedium"
+                               Text="{Binding UserInput}"
+                               MaxLength="100"/>
+
+
+                    </Border>
+
+
+
+                    <Border StrokeThickness="0"
+                            StrokeShape="RoundRectangle 45"
+                            HeightRequest="50"
+                            WidthRequest="230"
+                            BackgroundColor="#BB93FF"
+                            VerticalOptions="Center"
+                            HorizontalOptions="Center"
+                            x:Name="SaveButton">
+                        <Label Text="Сохранить"
+                               FontSize="24"
+                               FontFamily="MontserratAlternatesBold"
+                               HorizontalOptions="Fill"
+                               TextColor="#FFF"
+                               VerticalOptions="Center"
+                               HorizontalTextAlignment="Center" 
+                               VerticalTextAlignment="Center"/>
+                        <Border.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnSaveClicked"/>
+                        </Border.GestureRecognizers>
+
+                    </Border>
+
+
+                    <Border StrokeThickness="0"
+                            StrokeShape="RoundRectangle 45"
+                            HeightRequest="50"
+                            WidthRequest="230"
+                            BackgroundColor="#BB93FF"
+                            VerticalOptions="Center"
+                            HorizontalOptions="Center"
+                            x:Name="CancelButton">
+                        <Label Text="Отмена"
+                               FontSize="24"
+                               FontFamily="MontserratAlternatesBold"
+                               HorizontalOptions="Fill"
+                               TextColor="#FFF"
+                               VerticalOptions="Center"
+                               HorizontalTextAlignment="Center"
+                               VerticalTextAlignment="Center"/>
+                        <Border.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnCancelClicked"/>
+                        </Border.GestureRecognizers>
+
+                    </Border>
+                </StackLayout>
+            </Grid>
+        </Border>
+    </Grid>
+    
+    
+    
+</ContentPage>

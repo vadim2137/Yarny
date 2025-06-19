@@ -1,0 +1,103 @@
+is_global = true
+build_property.EnableAotAnalyzer = 
+build_property.EnableSingleFileAnalyzer = true
+build_property.EnableTrimAnalyzer = false
+build_property.IncludeAllContentForSelfExtract = 
+build_property.TargetFramework = net9.0-android
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = 
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = false
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = Yarny
+build_property.ProjectDir = C:\Users\waxiw\source\repos\Yarny\Yarny\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.EffectiveAnalysisLevelStyle = 9.0
+build_property.EnableCodeStyleSeverity = 
+
+[C:/Users/waxiw/source/repos/Yarny/Yarny/App.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = Yarny.App.xaml
+build_metadata.AdditionalFiles.TargetPath = App.xaml
+build_metadata.AdditionalFiles.RelativePath = App.xaml
+
+[C:/Users/waxiw/source/repos/Yarny/Yarny/AppShell.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = Yarny.AppShell.xaml
+build_metadata.AdditionalFiles.TargetPath = AppShell.xaml
+build_metadata.AdditionalFiles.RelativePath = AppShell.xaml
+
+[C:/Users/waxiw/source/repos/Yarny/Yarny/MainPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = Yarny.MainPage.xaml
+build_metadata.AdditionalFiles.TargetPath = MainPage.xaml
+build_metadata.AdditionalFiles.RelativePath = MainPage.xaml
+
+[C:/Users/waxiw/source/repos/Yarny/Yarny/Pages/BottomTabBar/CounterPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = Yarny.Pages.BottomTabBar.CounterPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Pages\BottomTabBar\CounterPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Pages\BottomTabBar\CounterPage.xaml
+
+[C:/Users/waxiw/source/repos/Yarny/Yarny/Pages/BottomTabBar/PostFeedPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = Yarny.Pages.BottomTabBar.PostFeedPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Pages\BottomTabBar\PostFeedPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Pages\BottomTabBar\PostFeedPage.xaml
+
+[C:/Users/waxiw/source/repos/Yarny/Yarny/Pages/BottomTabBar/ProfilePage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = Yarny.Pages.BottomTabBar.ProfilePage.xaml
+build_metadata.AdditionalFiles.TargetPath = Pages\BottomTabBar\ProfilePage.xaml
+build_metadata.AdditionalFiles.RelativePath = Pages\BottomTabBar\ProfilePage.xaml
+
+[C:/Users/waxiw/source/repos/Yarny/Yarny/Pages/BottomTabBar/SearchPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = Yarny.Pages.BottomTabBar.SearchPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Pages\BottomTabBar\SearchPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Pages\BottomTabBar\SearchPage.xaml
+
+[C:/Users/waxiw/source/repos/Yarny/Yarny/Pages/RegAndLog/EmailConfirmationPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = Yarny.Pages.RegAndLog.EmailConfirmationPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Pages\RegAndLog\EmailConfirmationPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Pages\RegAndLog\EmailConfirmationPage.xaml
+
+[C:/Users/waxiw/source/repos/Yarny/Yarny/Pages/RegAndLog/LoginPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = Yarny.Pages.RegAndLog.LoginPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Pages\RegAndLog\LoginPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Pages\RegAndLog\LoginPage.xaml
+
+[C:/Users/waxiw/source/repos/Yarny/Yarny/Pages/RegAndLog/PasswordRecoveryPage1.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = Yarny.Pages.RegAndLog.PasswordRecoveryPage1.xaml
+build_metadata.AdditionalFiles.TargetPath = Pages\RegAndLog\PasswordRecoveryPage1.xaml
+build_metadata.AdditionalFiles.RelativePath = Pages\RegAndLog\PasswordRecoveryPage1.xaml
+
+[C:/Users/waxiw/source/repos/Yarny/Yarny/Pages/RegAndLog/PasswordRecoveryPage2.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = Yarny.Pages.RegAndLog.PasswordRecoveryPage2.xaml
+build_metadata.AdditionalFiles.TargetPath = Pages\RegAndLog\PasswordRecoveryPage2.xaml
+build_metadata.AdditionalFiles.RelativePath = Pages\RegAndLog\PasswordRecoveryPage2.xaml
+
+[C:/Users/waxiw/source/repos/Yarny/Yarny/Pages/RegAndLog/RegistrationPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = Yarny.Pages.RegAndLog.RegistrationPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Pages\RegAndLog\RegistrationPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Pages\RegAndLog\RegistrationPage.xaml
+
+[C:/Users/waxiw/source/repos/Yarny/Yarny/Resources/Styles/Colors.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = Yarny.Resources.Styles.Colors.xaml
+build_metadata.AdditionalFiles.TargetPath = Resources\Styles\Colors.xaml
+build_metadata.AdditionalFiles.RelativePath = Resources\Styles\Colors.xaml
+
+[C:/Users/waxiw/source/repos/Yarny/Yarny/Resources/Styles/Styles.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = Yarny.Resources.Styles.Styles.xaml
+build_metadata.AdditionalFiles.TargetPath = Resources\Styles\Styles.xaml
+build_metadata.AdditionalFiles.RelativePath = Resources\Styles\Styles.xaml

@@ -1,0 +1,611 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Yarny.Pages.SearchPage"
+             Title="SearchPage">
+    <Grid>
+        <Grid Padding="0,50,0,50" BackgroundColor="#FAFAF0">
+            <ScrollView>
+                <VerticalStackLayout x:Name="MainContainer" Spacing="5" Padding="20">
+                    <Border Stroke="#BCE4FF"
+                            StrokeThickness="3"
+                            StrokeShape="RoundRectangle 45"
+                            HeightRequest="45"
+                            WidthRequest="370"
+                            BackgroundColor="White"
+                            Padding="10, 0, 10, 0">
+                        <HorizontalStackLayout>
+                            <Entry Placeholder="Выберите фильтры или введите ваш запрос"
+                                   Keyboard="Text"
+                                   FontSize="12"
+                                   FontFamily="MontserratAlternatesMedium"
+                                   Text="{Binding UserInput}"
+                                   MaxLength="100"/>
+
+                            <Border BackgroundColor="#BCE4FF"
+                                    StrokeThickness="0"
+                                    StrokeShape="RoundRectangle 45"
+                                    HeightRequest="30"
+                                    WidthRequest="30"
+                                    HorizontalOptions ="End">
+                                <Image Source="search_icon.svg"
+                                       WidthRequest="20"
+                                       HeightRequest="20"
+                                       HorizontalOptions="Center"
+                                       VerticalOptions="Center">
+                                </Image>
+                            </Border>
+                        </HorizontalStackLayout>
+                    </Border>
+
+                    <Border Stroke="#BCE4FF"
+                            StrokeThickness="3"
+                            StrokeShape="RoundRectangle 45"
+                            HeightRequest="30"
+                            WidthRequest="220"
+                            HorizontalOptions="Start" 
+                            BackgroundColor="White"
+                            Margin="0, 15, 0, 0"
+                            VerticalOptions="Center">
+                        <Label Text="Выберите тип изделия"
+                               FontSize="15"
+                               FontFamily="MontserratAlternatesRegular"
+                               HorizontalOptions="Fill"  
+                               VerticalOptions="Center"
+                               HorizontalTextAlignment="Center" 
+                               VerticalTextAlignment="Center"/>
+                    </Border>
+
+                    <HorizontalStackLayout Spacing="5" HorizontalOptions="Center" Margin="0,10,0,0">
+                        <Border Stroke="#BCE4FF"
+                                StrokeThickness="3"
+                                StrokeShape="RoundRectangle 45"
+                                HeightRequest="25"
+                                WidthRequest="100"
+                                BackgroundColor="White"
+                                VerticalOptions="Center"
+                                x:Name="HatTag">
+                            <Label Text="Шапка"
+                                   FontSize="11"
+                                   FontFamily="MontserratAlternatesRegular"
+                                   HorizontalOptions="Fill"  
+                                   VerticalOptions="Center"
+                                   HorizontalTextAlignment="Center" 
+                                   VerticalTextAlignment="Center"/>
+                            <Border.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="OnTagTapped"/>
+                            </Border.GestureRecognizers>
+                        </Border>
+
+                        <Border Stroke="#BCE4FF"
+                                StrokeThickness="3"
+                                StrokeShape="RoundRectangle 45"
+                                HeightRequest="25"
+                                WidthRequest="100"
+                                BackgroundColor="White"
+                                VerticalOptions="Center"
+                                x:Name="ScarfTag">
+                            <Label Text="Шарф"
+                                   FontSize="11"
+                                   FontFamily="MontserratAlternatesRegular"
+                                   HorizontalOptions="Fill"  
+                                   VerticalOptions="Center"
+                                   HorizontalTextAlignment="Center" 
+                                   VerticalTextAlignment="Center"/>
+                            <Border.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="OnTagTapped"/>
+                            </Border.GestureRecognizers>
+                        </Border>
+
+                        <Border Stroke="#BCE4FF"
+                                StrokeThickness="3"
+                                StrokeShape="RoundRectangle 45"
+                                HeightRequest="25"
+                                WidthRequest="100"
+                                BackgroundColor="White"
+                                VerticalOptions="Center"
+                                x:Name="MittensTag">
+                            <Label Text="Варежки"
+                                   FontSize="11"
+                                   FontFamily="MontserratAlternatesRegular"
+                                   HorizontalOptions="Fill"  
+                                   VerticalOptions="Center"
+                                   HorizontalTextAlignment="Center" 
+                                   VerticalTextAlignment="Center"/>
+                            <Border.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="OnTagTapped"/>
+                            </Border.GestureRecognizers>
+                        </Border>
+                    </HorizontalStackLayout>
+
+                    <HorizontalStackLayout Spacing="5" HorizontalOptions="Center">
+                        <Border Stroke="#BCE4FF"
+                                StrokeThickness="3"
+                                StrokeShape="RoundRectangle 45"
+                                HeightRequest="25"
+                                WidthRequest="100"
+                                BackgroundColor="White"
+                                VerticalOptions="Center"
+                                x:Name="ToyTag">
+                            <Label Text="Игрушка"
+                                   FontSize="11"
+                                   FontFamily="MontserratAlternatesRegular"
+                                   HorizontalOptions="Fill"  
+                                   VerticalOptions="Center"
+                                   HorizontalTextAlignment="Center" 
+                                   VerticalTextAlignment="Center"/>
+                            <Border.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="OnTagTapped"/>
+                            </Border.GestureRecognizers>
+                        </Border>
+
+                        <Border Stroke="#BCE4FF"
+                                StrokeThickness="3"
+                                StrokeShape="RoundRectangle 45"
+                                HeightRequest="25"
+                                WidthRequest="100"
+                                BackgroundColor="White"
+                                VerticalOptions="Center"
+                                x:Name="SocksTag">
+                            <Label Text="Носки"
+                                   FontSize="11"
+                                   FontFamily="MontserratAlternatesRegular"
+                                   HorizontalOptions="Fill"  
+                                   VerticalOptions="Center"
+                                   HorizontalTextAlignment="Center" 
+                                   VerticalTextAlignment="Center"/>
+                            <Border.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="OnTagTapped"/>
+                            </Border.GestureRecognizers>
+                        </Border>
+
+                        <Border Stroke="#BCE4FF"
+                                StrokeThickness="3"
+                                StrokeShape="RoundRectangle 45"
+                                HeightRequest="25"
+                                WidthRequest="100"
+                                BackgroundColor="White"
+                                VerticalOptions="Center"
+                                x:Name="LaceTag">
+                            <Label Text="Кружево"
+                                   FontSize="11"
+                                   FontFamily="MontserratAlternatesRegular"
+                                   HorizontalOptions="Fill"  
+                                   VerticalOptions="Center"
+                                   HorizontalTextAlignment="Center" 
+                                   VerticalTextAlignment="Center"/>
+                            <Border.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="OnTagTapped"/>
+                            </Border.GestureRecognizers>
+                        </Border>
+                    </HorizontalStackLayout>
+
+                    <Border Stroke="#BCE4FF"
+                            StrokeThickness="3"
+                            StrokeShape="RoundRectangle 45"
+                            HeightRequest="30"
+                            WidthRequest="200"
+                            HorizontalOptions="Start" 
+                            BackgroundColor="White"
+                            Margin="0, 15, 0, 0"
+                            VerticalOptions="Center">
+                        <Label Text="Выберите вид пряжи"
+                               FontSize="15"
+                               FontFamily="MontserratAlternatesRegular"
+                               HorizontalOptions="Fill"  
+                               VerticalOptions="Center"
+                               HorizontalTextAlignment="Center" 
+                               VerticalTextAlignment="Center"/>
+                    </Border>
+
+                    <HorizontalStackLayout Spacing="5" HorizontalOptions="Center" Margin="0,10,0,0">
+                        <Border Stroke="#BCE4FF"
+                                StrokeThickness="3"
+                                StrokeShape="RoundRectangle 45"
+                                HeightRequest="25"
+                                WidthRequest="100"
+                                BackgroundColor="White"
+                                VerticalOptions="Center"
+                                x:Name="WoolTag">
+                            <Label Text="Шерсть"
+                                   FontSize="11"
+                                   FontFamily="MontserratAlternatesRegular"
+                                   HorizontalOptions="Fill"  
+                                   VerticalOptions="Center"
+                                   HorizontalTextAlignment="Center" 
+                                   VerticalTextAlignment="Center"/>
+                            <Border.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="OnTagTapped"/>
+                            </Border.GestureRecognizers>
+                        </Border>
+
+                        <Border Stroke="#BCE4FF"
+                                StrokeThickness="3"
+                                StrokeShape="RoundRectangle 45"
+                                HeightRequest="25"
+                                WidthRequest="100"
+                                BackgroundColor="White"
+                                VerticalOptions="Center"
+                                x:Name="CottonTag">
+                            <Label Text="Хлопок"
+                                   FontSize="11"
+                                   FontFamily="MontserratAlternatesRegular"
+                                   HorizontalOptions="Fill"  
+                                   VerticalOptions="Center"
+                                   HorizontalTextAlignment="Center" 
+                                   VerticalTextAlignment="Center"/>
+                            <Border.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="OnTagTapped"/>
+                            </Border.GestureRecognizers>
+                        </Border>
+
+                        <Border Stroke="#BCE4FF"
+                                StrokeThickness="3"
+                                StrokeShape="RoundRectangle 45"
+                                HeightRequest="25"
+                                WidthRequest="100"
+                                BackgroundColor="White"
+                                VerticalOptions="Center"
+                                x:Name="LinenTag">
+                            <Label Text="Лён"
+                                   FontSize="11"
+                                   FontFamily="MontserratAlternatesRegular"
+                                   HorizontalOptions="Fill"  
+                                   VerticalOptions="Center"
+                                   HorizontalTextAlignment="Center" 
+                                   VerticalTextAlignment="Center"/>
+                            <Border.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="OnTagTapped"/>
+                            </Border.GestureRecognizers>
+                        </Border>
+                    </HorizontalStackLayout>
+
+                    <HorizontalStackLayout Spacing="5" HorizontalOptions="Center">
+                        <Border Stroke="#BCE4FF"
+                                StrokeThickness="3"
+                                StrokeShape="RoundRectangle 45"
+                                HeightRequest="25"
+                                WidthRequest="100"
+                                BackgroundColor="White"
+                                VerticalOptions="Center"
+                                x:Name="ViscoseTag">
+                            <Label Text="Вискоза"
+                                   FontSize="11"
+                                   FontFamily="MontserratAlternatesRegular"
+                                   HorizontalOptions="Fill"  
+                                   VerticalOptions="Center"
+                                   HorizontalTextAlignment="Center" 
+                                   VerticalTextAlignment="Center"/>
+                            <Border.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="OnTagTapped"/>
+                            </Border.GestureRecognizers>
+                        </Border>
+
+                        <Border Stroke="#BCE4FF"
+                                StrokeThickness="3"
+                                StrokeShape="RoundRectangle 45"
+                                HeightRequest="25"
+                                WidthRequest="100"
+                                BackgroundColor="White"
+                                VerticalOptions="Center"
+                                x:Name="AcrylicTag">
+                            <Label Text="Акрил"
+                                   FontSize="11"
+                                   FontFamily="MontserratAlternatesRegular"
+                                   HorizontalOptions="Fill"  
+                                   VerticalOptions="Center"
+                                   HorizontalTextAlignment="Center" 
+                                   VerticalTextAlignment="Center"/>
+                            <Border.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="OnTagTapped"/>
+                            </Border.GestureRecognizers>
+                        </Border>
+
+                        <Border Stroke="#BCE4FF"
+                                StrokeThickness="3"
+                                StrokeShape="RoundRectangle 45"
+                                HeightRequest="25"
+                                WidthRequest="100"
+                                BackgroundColor="White"
+                                VerticalOptions="Center"
+                                x:Name="ShinyTag">
+                            <Label Text="Блестящая"
+                                   FontSize="11"
+                                   FontFamily="MontserratAlternatesRegular"
+                                   HorizontalOptions="Fill"  
+                                   VerticalOptions="Center"
+                                   HorizontalTextAlignment="Center" 
+                                   VerticalTextAlignment="Center"/>
+                            <Border.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="OnTagTapped"/>
+                            </Border.GestureRecognizers>
+                        </Border>
+                    </HorizontalStackLayout>
+
+                    <Border Stroke="#BCE4FF"
+                            StrokeThickness="3"
+                            StrokeShape="RoundRectangle 45"
+                            HeightRequest="30"
+                            WidthRequest="280"
+                            HorizontalOptions="Start" 
+                            BackgroundColor="White"
+                            Margin="0, 15, 0, 0"
+                            VerticalOptions="Center">
+                        <Label Text="Выберите уровень сложности"
+                               FontSize="15"
+                               FontFamily="MontserratAlternatesRegular"
+                               HorizontalOptions="Fill"  
+                               VerticalOptions="Center"
+                               HorizontalTextAlignment="Center" 
+                               VerticalTextAlignment="Center"/>
+                    </Border>
+
+                    <HorizontalStackLayout Spacing="5" HorizontalOptions="Center" Margin="0,10,0,0">
+                        <Border Stroke="#BCE4FF"
+                                StrokeThickness="3"
+                                StrokeShape="RoundRectangle 45"
+                                HeightRequest="25"
+                                WidthRequest="100"
+                                BackgroundColor="White"
+                                VerticalOptions="Center"
+                                x:Name="EasyTag">
+                            <Label Text="Лёгкий"
+                                   FontSize="11"
+                                   FontFamily="MontserratAlternatesRegular"
+                                   HorizontalOptions="Fill"  
+                                   VerticalOptions="Center"
+                                   HorizontalTextAlignment="Center" 
+                                   VerticalTextAlignment="Center"/>
+                            <Border.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="OnTagTapped"/>
+                            </Border.GestureRecognizers>
+                        </Border>
+
+                        <Border Stroke="#BCE4FF"
+                                StrokeThickness="3"
+                                StrokeShape="RoundRectangle 45"
+                                HeightRequest="25"
+                                WidthRequest="100"
+                                BackgroundColor="White"
+                                VerticalOptions="Center"
+                                x:Name="MediumTag">
+                            <Label Text="Средний"
+                                   FontSize="11"
+                                   FontFamily="MontserratAlternatesRegular"
+                                   HorizontalOptions="Fill"  
+                                   VerticalOptions="Center"
+                                   HorizontalTextAlignment="Center" 
+                                   VerticalTextAlignment="Center"/>
+                            <Border.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="OnTagTapped"/>
+                            </Border.GestureRecognizers>
+                        </Border>
+
+                        <Border Stroke="#BCE4FF"
+                                StrokeThickness="3"
+                                StrokeShape="RoundRectangle 45"
+                                HeightRequest="25"
+                                WidthRequest="100"
+                                BackgroundColor="White"
+                                VerticalOptions="Center"
+                                x:Name="HardTag">
+                            <Label Text="Сложный"
+                                   FontSize="11"
+                                   FontFamily="MontserratAlternatesRegular"
+                                   HorizontalOptions="Fill"  
+                                   VerticalOptions="Center"
+                                   HorizontalTextAlignment="Center" 
+                                   VerticalTextAlignment="Center"/>
+                            <Border.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="OnTagTapped"/>
+                            </Border.GestureRecognizers>
+                        </Border>
+                    </HorizontalStackLayout>
+
+                    <Border Stroke="#BCE4FF"
+                            StrokeThickness="3"
+                            StrokeShape="RoundRectangle 45"
+                            HeightRequest="30"
+                            WidthRequest="230"
+                            HorizontalOptions="Start" 
+                            BackgroundColor="White"
+                            Margin="0, 15, 0, 0"
+                            VerticalOptions="Center">
+                        <Label Text="Выберите инструмент"
+                               FontSize="15"
+                               FontFamily="MontserratAlternatesRegular"
+                               HorizontalOptions="Fill"  
+                               VerticalOptions="Center"
+                               HorizontalTextAlignment="Center" 
+                               VerticalTextAlignment="Center"/>
+                    </Border>
+
+                    <HorizontalStackLayout Spacing="5" HorizontalOptions="Center" Margin="0,10,0,0">
+                        <Border Stroke="#BCE4FF"
+                                StrokeThickness="3"
+                                StrokeShape="RoundRectangle 45"
+                                HeightRequest="25"
+                                WidthRequest="100"
+                                BackgroundColor="White"
+                                VerticalOptions="Center"
+                                x:Name="NeedlesTag">
+                            <Label Text="Спицы"
+                                   FontSize="11"
+                                   FontFamily="MontserratAlternatesRegular"
+                                   HorizontalOptions="Fill"  
+                                   VerticalOptions="Center"
+                                   HorizontalTextAlignment="Center" 
+                                   VerticalTextAlignment="Center"/>
+                            <Border.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="OnTagTapped"/>
+                            </Border.GestureRecognizers>
+                        </Border>
+
+                        <Border Stroke="#BCE4FF"
+                                StrokeThickness="3"
+                                StrokeShape="RoundRectangle 45"
+                                HeightRequest="25"
+                                WidthRequest="100"
+                                BackgroundColor="White"
+                                VerticalOptions="Center"
+                                x:Name="HookTag">
+                            <Label Text="Крючок"
+                                   FontSize="11"
+                                   FontFamily="MontserratAlternatesRegular"
+                                   HorizontalOptions="Fill"  
+                                   VerticalOptions="Center"
+                                   HorizontalTextAlignment="Center" 
+                                   VerticalTextAlignment="Center"/>
+                            <Border.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="OnTagTapped"/>
+                            </Border.GestureRecognizers>
+                        </Border>
+
+                        <Border StrokeThickness="0"
+                                StrokeShape="RoundRectangle 45"
+                                HeightRequest="25"
+                                WidthRequest="100"
+                                VerticalOptions="Center">
+                        </Border>
+                    </HorizontalStackLayout>
+
+                </VerticalStackLayout>
+            </ScrollView>
+
+            <Border Stroke="#BCE4FF"
+                    StrokeThickness="3"
+                    StrokeShape="RoundRectangle 45"
+                    HeightRequest="50"
+                    WidthRequest="300"
+                    BackgroundColor="White"
+                    VerticalOptions="End"
+                    x:Name="ResetFilters"
+                    Margin="0,0,0,20">
+                <Label Text="Сбросить все фильтры"
+                       FontSize="20"
+                       FontFamily="MontserratAlternatesMedium"
+                       HorizontalOptions="Fill"
+                       TextColor="#BCE4FF"
+                       VerticalOptions="Center"
+                       HorizontalTextAlignment="Center" 
+                       VerticalTextAlignment="Center"/>
+                <Border.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="ResetFiltersTapped"/>
+                </Border.GestureRecognizers>
+
+            </Border>
+        </Grid>
+
+        <!-- Header с логотипом -->
+        <Border BackgroundColor="#FFFFFF"
+                HeightRequest="50"
+                VerticalOptions="Start"
+                HorizontalOptions="Fill"
+                Margin="-1,0,-1,0"  
+                StrokeThickness="0">
+            <Image Source="big_logo_header.svg"
+                   Aspect="AspectFit" 
+                   HorizontalOptions="Fill"
+                   VerticalOptions="Fill" />
+        </Border>
+
+        <Border BackgroundColor="#FDBCE5"
+                StrokeShape="RoundRectangle 20, 20, 0, 0" 
+                HeightRequest="50"
+                VerticalOptions="End"
+                HorizontalOptions="Fill"
+                Margin="-1,0,-1,0"  
+                StrokeThickness="0">
+            <Grid HeightRequest="50"
+                  Padding="0,0"
+                  ColumnDefinitions="*,*,*,*" 
+                  ColumnSpacing="0"
+                  BackgroundColor="Transparent">
+
+                <Border Grid.Column="0"
+                        WidthRequest="45" 
+                        HeightRequest="45" 
+                        StrokeShape="RoundRectangle 45"
+                        BackgroundColor="#FDBCE5"
+                        Stroke="Transparent"
+                        StrokeThickness="0"
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center"/>
+                <Image Grid.Column="0"
+                       Source="post_feed_icon.svg"
+                       WidthRequest="30"
+                       HeightRequest="30"
+                       HorizontalOptions="Center"
+                       x:Name="PostFeedPageButton"
+                       VerticalOptions="Center">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="PostFeedPageTapped"/>
+                    </Image.GestureRecognizers>
+                </Image>
+
+                <Border Grid.Column="1"
+                    WidthRequest="45" 
+                    HeightRequest="45" 
+                    StrokeShape="RoundRectangle 45"
+                    BackgroundColor="#FDBCE5"
+                    Stroke="Transparent"
+                    StrokeThickness="0"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"/>
+                <Image Grid.Column="1"
+                   Source="counter_icon.svg"
+                   WidthRequest="30"
+                   HeightRequest="30"
+                   x:Name="CounterPageeButton"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="CounterPageTapped"/>
+                    </Image.GestureRecognizers>
+                </Image>
+
+                <Border Grid.Column="2"
+                    WidthRequest="45" 
+                    HeightRequest="45" 
+                    StrokeShape="RoundRectangle 45"
+                    BackgroundColor="#FAFAF0"
+                    Stroke="Transparent"
+                    StrokeThickness="0"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"/>
+                <Image Grid.Column="2"
+                   Source="search_icon_active.svg"
+                   WidthRequest="30"
+                   HeightRequest="30"
+                   x:Name="SearchPageeButton"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="SearchPageTapped"/>
+                    </Image.GestureRecognizers>
+                </Image>
+
+                <Border Grid.Column="3"
+                    WidthRequest="45" 
+                    HeightRequest="45" 
+                    StrokeShape="RoundRectangle 45"
+                    BackgroundColor="#FDBCE5"
+                    Stroke="Transparent"
+                    StrokeThickness="0"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"/>
+                <Image Grid.Column="3"
+                   Source="profile_icon.svg"
+                   WidthRequest="30"
+                   HeightRequest="30"
+                   x:Name="ProfilePageButton"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="ProfilePageTapped"/>
+                    </Image.GestureRecognizers>
+                </Image>
+            </Grid>
+        </Border>
+    </Grid>
+</ContentPage>

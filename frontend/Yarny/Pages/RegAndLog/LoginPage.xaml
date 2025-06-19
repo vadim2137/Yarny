@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Yarny.Pages.LoginPage"
+             Title="LoginPage"
+             Shell.NavBarIsVisible="False">
+
+    <Grid>
+        <!-- Фоновое изображение -->
+        <Image Source="log_reg_bg.svg"
+               Aspect="AspectFill"
+               HorizontalOptions="Fill"
+               VerticalOptions="Fill"/>
+
+        <!-- Основной контейнер -->
+        <Border BackgroundColor="#FFFFFF"
+                Stroke="#FDF7BD"
+                StrokeThickness="3"
+                StrokeShape="RoundRectangle 50"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                Padding="20,40,20,25"
+                WidthRequest="305"
+                Margin="20">
+
+            <StackLayout Spacing="15">
+                <!-- Поле логина -->
+                <Border Stroke="#FDF7BD"
+                        StrokeThickness="3"
+                        StrokeShape="RoundRectangle 50"
+                        Padding="10,5"
+                        BackgroundColor="White">
+                    <Entry x:Name="LoginEntry"
+                           Placeholder="Логин или email"
+                           BackgroundColor="Transparent"
+                           TextColor="Black"
+                           FontFamily="MontserratAlternatesRegular"
+                           FontSize="18"
+                           ClearButtonVisibility="WhileEditing"
+                           Visual="Material"/>
+                </Border>
+
+                <!-- Поле пароля -->
+                <Border Stroke="#FDF7BD"
+                        StrokeThickness="3"
+                        StrokeShape="RoundRectangle 50"
+                        Padding="10,5"
+                        BackgroundColor="White">
+                    <Entry x:Name="PassEntry"
+                           Placeholder="Пароль"
+                           IsPassword="True"
+                           BackgroundColor="Transparent"
+                           TextColor="Black"
+                           FontFamily="MontserratAlternatesRegular"
+                           FontSize="18"
+                           ClearButtonVisibility="WhileEditing"
+                           Visual="Material"/>
+                </Border>
+
+                <!-- Ссылка "Забыли пароль?" -->
+                <Label Text="Забыли пароль?" 
+                       FontSize="12" 
+                       FontFamily="MontserratAlternatesRegular"
+                       TextColor="#FDBCD3"
+                       HorizontalOptions="End" 
+                       Margin="0,-10,0,0">
+
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnPRClicked"/>
+                    </Label.GestureRecognizers>
+                </Label>
+
+                <!-- Кнопка входа -->
+                <Border Stroke="#FFBD96"
+                StrokeThickness="3"
+                StrokeShape="RoundRectangle 50"
+                BackgroundColor="#FDD5BD"
+                WidthRequest="200"
+                HeightRequest="55"
+                HorizontalOptions="Center">
+
+                        <Button Text="Войти" 
+                BackgroundColor="Transparent"
+                TextColor="White"
+                FontSize="24"
+                FontFamily="MontserratAlternatesSemiBold"
+                CornerRadius="50"
+                Pressed="OnLoginButton"
+                WidthRequest="200"
+                HeightRequest="55"/>
+
+                </Border>
+
+
+                <!-- Ссылка на регистрацию -->
+                <StackLayout Orientation="Horizontal" 
+                             HorizontalOptions="Center" 
+                             Spacing="0"
+                             Margin="0,0,0,0">
+                    <Label Text="Ещё нет аккаунта? " 
+                           FontSize="10"
+                           FontFamily="MontserratAlternatesMedium"
+                           TextColor="#A3A3A3"/>
+                    <Label Text="Зарегистрируйтесь" 
+                           FontSize="10" 
+                           FontFamily="MontserratAlternatesMedium"
+                           TextColor="#FDD5BD">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnRegisterClicked"/>
+                        </Label.GestureRecognizers>
+                    </Label>
+                </StackLayout>
+            </StackLayout>
+        </Border>
+    </Grid>
+</ContentPage>

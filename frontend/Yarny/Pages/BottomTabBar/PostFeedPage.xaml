@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Yarny.Pages.PostFeedPage"
+             Title="Лента схем">
+    <Grid>
+        <!-- Основной контент с отступами для header и tab bar -->
+        <Grid Padding="0,50,0,50" BackgroundColor="#FAFAF0">
+            <RefreshView x:Name="RefreshView"
+                       RefreshColor="#FDBCE5"
+                       Refreshing="OnRefreshing">
+                <ScrollView x:Name="MainScrollView" 
+                           Scrolled="OnScrollViewScrolled"
+                           VerticalScrollBarVisibility="Never">
+                    <VerticalStackLayout x:Name="PostsContainer" 
+                                       Spacing="20" 
+                                       Padding="20,30,20,30"/>
+                </ScrollView>
+            </RefreshView>
+        </Grid>
+
+        <!-- Header с логотипом -->
+        <Border BackgroundColor="#FFFFFF"
+              HeightRequest="50"
+              VerticalOptions="Start"
+              HorizontalOptions="Fill"
+              Margin="-1,0,-1,0"  
+              StrokeThickness="0">
+            <Image Source="big_logo_header.svg"
+                 Aspect="AspectFit" 
+                 HorizontalOptions="Fill"
+                 VerticalOptions="Fill" />
+        </Border>
+
+        <!-- Нижний Tab Bar -->
+        <Border BackgroundColor="#FDBCE5"
+              StrokeShape="RoundRectangle 20, 20, 0, 0" 
+              HeightRequest="50"
+              VerticalOptions="End"
+              HorizontalOptions="Fill"
+              Margin="-1,0,-1,0"  
+              StrokeThickness="0">
+            <Grid HeightRequest="50"
+                Padding="0,0"
+                ColumnDefinitions="*,*,*,*" 
+                ColumnSpacing="0"
+                BackgroundColor="Transparent">
+
+                <!-- Кнопка ленты -->
+                <Border Grid.Column="0"
+                      WidthRequest="45" 
+                      HeightRequest="45" 
+                      StrokeShape="RoundRectangle 45"
+                      BackgroundColor="#FAFAF0"
+                      Stroke="Transparent"
+                      StrokeThickness="0"
+                      HorizontalOptions="Center"
+                      VerticalOptions="Center"/>
+                <Image Grid.Column="0"
+                       x:Name="PostFeedPageButton"
+                       Source="post_feed_icon_active.svg"
+                       WidthRequest="30"
+                       HeightRequest="30"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="PostFeedPageTapped"/>
+                    </Image.GestureRecognizers>
+                </Image>
+
+                <!-- Кнопка счетчика -->
+                <Border Grid.Column="1"
+                      WidthRequest="45" 
+                      HeightRequest="45" 
+                      StrokeShape="RoundRectangle 45"
+                      BackgroundColor="#FDBCE5"
+                      Stroke="Transparent"
+                      StrokeThickness="0"
+                      HorizontalOptions="Center"
+                      VerticalOptions="Center"/>
+                <Image Grid.Column="1"
+                     Source="counter_icon.svg"
+                     WidthRequest="30"
+                     HeightRequest="30"
+                     x:Name="CounterPageeButton"
+                     HorizontalOptions="Center"
+                     VerticalOptions="Center">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="CounterPageTapped"/>
+                    </Image.GestureRecognizers>
+
+                </Image>
+
+                <!-- Кнопка поиска -->
+                <Border Grid.Column="2"
+                      WidthRequest="45" 
+                      HeightRequest="45" 
+                      StrokeShape="RoundRectangle 45"
+                      BackgroundColor="#FDBCE5"
+                      Stroke="Transparent"
+                      StrokeThickness="0"
+                      HorizontalOptions="Center"
+                      VerticalOptions="Center"/>
+                <Image Grid.Column="2"
+                     Source="search_icon.svg"
+                     WidthRequest="30"
+                     HeightRequest="30"
+                     x:Name="SearchPageeButton"
+                     HorizontalOptions="Center"
+                     VerticalOptions="Center">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="SearchPageTapped"/>
+                    </Image.GestureRecognizers>
+
+                </Image>
+
+                <!-- Кнопка профиля -->
+                <Border Grid.Column="3"
+                      WidthRequest="45" 
+                      HeightRequest="45" 
+                      StrokeShape="RoundRectangle 45"
+                      BackgroundColor="#FDBCE5"
+                      Stroke="Transparent"
+                      StrokeThickness="0"
+                      HorizontalOptions="Center"
+                      VerticalOptions="Center"/>
+                <Image Grid.Column="3"
+                       x:Name="ProfilePageButton"
+                       Source="profile_icon.svg"
+                       WidthRequest="30"
+                       HeightRequest="30"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="ProfilePageTapped"/>
+                    </Image.GestureRecognizers>
+                </Image>
+            </Grid>
+        </Border>
+    </Grid>
+</ContentPage>

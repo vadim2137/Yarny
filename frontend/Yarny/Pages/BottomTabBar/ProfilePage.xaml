@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Yarny.Pages.ProfilePage"
+             Title="ProfilePage">
+    <Grid>
+        <Grid Padding="0,0,0,50" BackgroundColor="#FAFAF0">
+            <ScrollView>
+                <VerticalStackLayout x:Name="MainContainer" Spacing="20" Padding="20">
+                    <!-- Блок профиля (будет обновляться) -->
+                    <VerticalStackLayout x:Name="ProfileHeaderContainer" Spacing="15"/>
+
+                    <Grid RowDefinitions="Auto,Auto,*">
+                        <!-- Горизонтальное меню с иконками -->
+                        <Grid Grid.Row="0" Padding="20,10" ColumnDefinitions="*,Auto,*">
+                            <!-- Схемы (слева) -->
+                            <Image x:Name="SchemesImage" Source="my_schemes.svg" 
+                   WidthRequest="30" HeightRequest="30"
+                   Grid.Column="0" HorizontalOptions="Start">
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="OnTabTapped"/>
+                                </Image.GestureRecognizers>
+                            </Image>
+
+                            <!-- Прогресс (центр) -->
+                            <Image x:Name="ProgressImage" Source="my_progress.svg" 
+                   WidthRequest="30" HeightRequest="30"
+                   Grid.Column="1" HorizontalOptions="Center">
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="OnTabTapped"/>
+                                </Image.GestureRecognizers>
+                            </Image>
+
+                            <!-- Избранное (справа) -->
+                            <Image x:Name="FavoritesImage" Source="my_favorites.svg" 
+                   WidthRequest="30" HeightRequest="30"
+                   Grid.Column="2" HorizontalOptions="End">
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="OnTabTapped"/>
+                                </Image.GestureRecognizers>
+                            </Image>
+                        </Grid>
+
+                        <!-- Разделительная линия -->
+                        <BoxView Grid.Row="1" Color="#FDD5BD" HeightRequest="1"/>
+
+                        <!-- Контентная область -->
+                        <ContentView x:Name="ContentArea" Grid.Row="2"/>
+                    </Grid>
+                </VerticalStackLayout>
+            </ScrollView>
+        </Grid>
+
+
+        <Border BackgroundColor="#FDBCE5"
+                StrokeShape="RoundRectangle 20, 20, 0, 0" 
+                HeightRequest="50"
+                VerticalOptions="End"
+                HorizontalOptions="Fill"
+                Margin="-1,0,-1,0"  
+                StrokeThickness="0">
+            <Grid HeightRequest="50"
+                  Padding="0,0"
+                  ColumnDefinitions="*,*,*,*" 
+                  ColumnSpacing="0"
+                  BackgroundColor="Transparent">
+
+                <Border Grid.Column="0"
+                        WidthRequest="45" 
+                        HeightRequest="45" 
+                        StrokeShape="RoundRectangle 45"
+                        BackgroundColor="#FDBCE5"
+                        Stroke="Transparent"
+                        StrokeThickness="0"
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center"/>
+                <Image Grid.Column="0"
+                       Source="post_feed_icon.svg"
+                       WidthRequest="30"
+                       HeightRequest="30"
+                       HorizontalOptions="Center"
+                       x:Name="PostFeedPageButton"
+                       VerticalOptions="Center">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="PostFeedPageTapped"/>
+                    </Image.GestureRecognizers>
+
+                </Image>
+
+                <Border Grid.Column="1"
+                        WidthRequest="45" 
+                        HeightRequest="45" 
+                        StrokeShape="RoundRectangle 45"
+                        BackgroundColor="#FDBCE5"
+                        Stroke="Transparent"
+                        StrokeThickness="0"
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center"/>
+                <Image Grid.Column="1"
+                       Source="counter_icon.svg"
+                       WidthRequest="30"
+                       HeightRequest="30"
+                       x:Name="CounterPageeButton"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="CounterPageTapped"/>
+                    </Image.GestureRecognizers>
+
+                </Image>
+
+                <Border Grid.Column="2"
+                        WidthRequest="45" 
+                        HeightRequest="45" 
+                        StrokeShape="RoundRectangle 45"
+                        BackgroundColor="#FDBCE5"
+                        Stroke="Transparent"
+                        StrokeThickness="0"
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center"/>
+                <Image Grid.Column="2"
+                       Source="search_icon.svg"
+                       WidthRequest="30"
+                       HeightRequest="30"
+                       x:Name="SearchPageeButton"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="SearchPageTapped"/>
+                    </Image.GestureRecognizers>
+
+                </Image>
+
+                <Border Grid.Column="3"
+                        WidthRequest="45" 
+                        HeightRequest="45" 
+                        StrokeShape="RoundRectangle 45"
+                        BackgroundColor="#FAFAF0"
+                        Stroke="Transparent"
+                        StrokeThickness="0"
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center"/>
+                <Image Grid.Column="3"
+                       Source="profile_icon_active.svg"
+                       WidthRequest="30"
+                       HeightRequest="30"
+                       x:Name="ProfilePageButton"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="ProfilePageTapped"/>
+                    </Image.GestureRecognizers>
+                </Image>
+            </Grid>
+        </Border>
+    </Grid>
+</ContentPage>

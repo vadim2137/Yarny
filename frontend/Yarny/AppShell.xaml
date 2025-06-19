@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="Yarny.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:views="clr-namespace:Yarny.Pages"
+    Shell.FlyoutBehavior="Disabled"
+    Shell.NavBarIsVisible="False"
+    Title="Yarny">
+
+    <ShellContent
+        Title="Login"
+        ContentTemplate="{DataTemplate views:LoginPage}"
+        Route="LoginPage" />
+
+    <ShellContent
+        Title="PostFeed"
+        ContentTemplate="{DataTemplate views:PostFeedPage}"
+        Route="PostFeedPage" />
+
+    <ShellContent
+        Title="Counter"
+        ContentTemplate="{DataTemplate views:CounterPage}"
+        Route="CounterPage" />
+
+    <ShellContent
+        Title="Search"
+        ContentTemplate="{DataTemplate views:SearchPage}"
+        Route="SearchPage" />
+
+    <ShellContent
+        Title="Profile"
+        ContentTemplate="{DataTemplate views:ProfilePage}"
+        Route="ProfilePage" />
+
+    
+    
+    
+    
+    <ShellContent
+        Title="Registration"
+        ContentTemplate="{DataTemplate views:RegistrationPage}"
+        Route="RegistrationPage" />
+
+    <ShellContent
+        Title="EmailConfirmationPage"
+        ContentTemplate="{DataTemplate views:EmailConfirmationPage}"
+        Route="EmailConfirmationPage" />
+
+    <ShellContent
+        Title="PasswordRecoveryPage1"
+        ContentTemplate="{DataTemplate views:PasswordRecoveryPage1}"
+        Route="PasswordRecoveryPage1" />
+
+</Shell>
