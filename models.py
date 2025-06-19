@@ -1,6 +1,6 @@
 from enum import Enum
 from flask_sqlalchemy import SQLAlchemy
-from sqlalchemy.dialects.postgresql import ARRAY
+from sqlalchemy.dialects.postgresql import ARRAY, JSON
 
 db = SQLAlchemy()
 

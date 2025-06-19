@@ -36,6 +36,47 @@ def create_user():
     
     return jsonify(User.from_orm(user).dict()), 201
 
+@app.route('/users/<int:user_id>/schemes', methods=['GET'])
+def get_user_schemes(user_id):
+    page = request.args.get('page', 1, type=int)
+    per_page = request.args.get('per_page', 10, type=int)
+    
+    # Проверяем существование пользователя
+    user = User.query.get(user_id)
+    if not user:
+        return jsonify({"error": "User not found"}), 404
+    
+    # Получаем схемы с пагинацией
+    schemes_query = Scheme.query.filter_by(creator_id=user_id)
+    paginated_schemes = schemes_query.paginate(page=page, per_page=per_page, error_out=False)
+    
+    # Форматируем ответ
+    response = {
+        "items": [format_scheme(scheme) for scheme in paginated_schemes.items],
+        "total": paginated_schemes.total,
+        "page": paginated_schemes.page,
+        "per_page": paginated_schemes.per_page,
+        "creator": {
+            "id": user.id,
+            "username": user.username,
+            "avatar": user.avatar
+        }
+    }
+    
+    return jsonify(response)
+
+def format_scheme(scheme):
+    return {
+        "id": scheme.id,
+        "title": scheme.title,
+        "preview_image": scheme.preview_image,
+        "difficulty_level": scheme.difficulty_level.value,
+        "tags": scheme.tags,
+        "created_at": scheme.created_at.isoformat() if scheme.created_at else None,
+        "materials": scheme.materials,
+        "stages_count": len(scheme.stages)
+    }
+
 @app.route('/users/<int:user_id>', methods=['GET'])
 def get_user(user_id):
     user = User.query.get_or_404(user_id)
@@ -138,6 +179,116 @@ def update_active_row(active_row_id):
 def get_user_active_schemes(user_id):
     active_schemes = ActiveScheme.query.filter_by(user_id=user_id).all()
     return jsonify([ActiveScheme.from_orm(scheme).dict() for scheme in active_schemes])
+
+@app.route('/schemes/recommended', methods=['GET'])
+def get_recommended_schemes():
+    page = request.args.get('page', 1, type=int)
+    per_page = request.args.get('per_page', 10, type=int)
+    
+    # Для авторизованных пользователей
+    if 'Authorization' in request.headers:
+        try:
+            token = request.headers['Authorization'].split()[1]
+            user_id = get_jwt_identity()
+            user = User.query.get(user_id)
+            
+            # 1. Схемы с тегами из избранного
+            favorite_tags = set()
+            for scheme_id in user.favorite_schemes_id or []:
+                scheme = Scheme.query.get(scheme_id)
+                if scheme and scheme.tags:
+                    favorite_tags.update(scheme.tags)
+            
+            if favorite_tags:
+                query = Scheme.query.filter(Scheme.tags.overlap(list(favorite_tags)))
+                recommended = query.order_by(db.func.random()).paginate(page=page, per_page=per_page, error_out=False)
+                if recommended.items:
+                    return jsonify(format_recommended_response(recommended))
+            
+            # 2. Схемы с предпочитаемым уровнем сложности
+            difficulty = get_user_preferred_difficulty(user_id)
+            if difficulty:
+                query = Scheme.query.filter_by(difficulty_level=difficulty)
+                recommended = query.order_by(db.func.random()).paginate(page=page, per_page=per_page, error_out=False)
+                if recommended.items:
+                    return jsonify(format_recommended_response(recommended))
+        
+        except Exception as e:
+            app.logger.error(f"Error in recommendations for auth user: {str(e)}")
+    
+    # 3. Для всех (популярные схемы) и для неавторизованных
+    return get_popular_schemes(page, per_page)
+
+def get_user_preferred_difficulty(user_id):
+    # Анализируем активные схемы пользователя для определения предпочитаемого уровня
+    result = db.session.query(
+        Scheme.difficulty_level,
+        db.func.count().label('count')
+    ).join(ActiveScheme).filter(
+        ActiveScheme.user_id == user_id
+    ).group_by(
+        Scheme.difficulty_level
+    ).order_by(
+        db.desc('count')
+    ).first()
+    
+    return result[0] if result else None
+
+def get_popular_schemes(page, per_page):
+    # Схемы, отсортированные по количеству активных пользователей
+    popular_query = db.session.query(
+        Scheme,
+        db.func.count(ActiveScheme.id).label('active_count')
+    ).outerjoin(
+        ActiveScheme
+    ).group_by(
+        Scheme.id
+    ).order_by(
+        db.desc('active_count'),
+        db.func.random()
+    )
+    
+    # Для неавторизованных - баланс по сложности
+    if 'Authorization' not in request.headers:
+        # Получаем по 3 схемы каждого уровня сложности
+        easy = Scheme.query.filter_by(difficulty_level=DifficultyLevel.EASY).order_by(db.func.random()).limit(3)
+        medium = Scheme.query.filter_by(difficulty_level=DifficultyLevel.MEDIUM).order_by(db.func.random()).limit(3)
+        hard = Scheme.query.filter_by(difficulty_level=DifficultyLevel.HARD).order_by(db.func.random()).limit(4)
+        
+        schemes = easy.union(medium).union(hard).all()
+        total = Scheme.query.count()
+        
+        return jsonify({
+            "items": [format_scheme(scheme) for scheme in schemes],
+            "total": total,
+            "page": 1,
+            "per_page": 10
+        })
+    
+    # Для авторизованных (если предыдущие рекомендации не сработали)
+    paginated = popular_query.paginate(page=page, per_page=per_page, error_out=False)
+    return jsonify(format_recommended_response(paginated))
+
+def format_recommended_response(paginated_result):
+    return {
+        "items": [format_scheme(item[0]) for item in paginated_result.items],
+        "total": paginated_result.total,
+        "page": paginated_result.page,
+        "per_page": paginated_result.per_page
+    }
+
+def format_scheme(scheme):
+    return {
+        "id": scheme.id,
+        "title": scheme.title,
+        "preview_image": scheme.preview_image,
+        "difficulty_level": scheme.difficulty_level.value,
+        "tags": scheme.tags,
+        "creator": {
+            "id": scheme.creator.id,
+            "username": scheme.creator.username
+        }
+    }
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', debug=False)

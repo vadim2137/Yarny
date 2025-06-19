@@ -28,7 +28,7 @@ class User(UserBase):
     favorite_schemes_id: List[int] = []
 
     class Config:
-        orm_mode = True
+        from_attributes = True
 
 class RowBase(BaseModel):
     title: str
@@ -37,7 +37,7 @@ class Row(RowBase):
     id: int
 
     class Config:
-        orm_mode = True
+        from_attributes = True
 
 class StageBase(BaseModel):
     title: str
@@ -52,7 +52,7 @@ class Stage(StageBase):
     rows: List[Row] = []
 
     class Config:
-        orm_mode = True
+        from_attributes = True
 
 class SchemeBase(BaseModel):
     title: str
@@ -72,7 +72,7 @@ class Scheme(SchemeBase):
     stages: List[Stage] = []
 
     class Config:
-        orm_mode = True
+        from_attributes = True
 
 class ActiveRowBase(BaseModel):
     row_id: int
@@ -82,7 +82,7 @@ class ActiveRow(ActiveRowBase):
     id: int
 
     class Config:
-        orm_mode = True
+        from_attributes = True
 
 class ActiveStageBase(BaseModel):
     stage_id: int
@@ -95,7 +95,7 @@ class ActiveStage(ActiveStageBase):
     rows: List[ActiveRow] = []
 
     class Config:
-        orm_mode = True
+        from_attributes = True
 
 class ActiveSchemeBase(BaseModel):
     scheme_id: int
@@ -109,4 +109,4 @@ class ActiveScheme(ActiveSchemeBase):
     stages: List[ActiveStage] = []
 
     class Config:
-        orm_mode = True
+        from_attributes = True
